@@ -1,0 +1,17 @@
+services:
+  db:
+    # 使用国内加速镜像源
+    image: m.daocloud.io/docker.io/library/postgres:15
+    container_name: library_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456  # 务必与你的 .env 文件保持一致
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
